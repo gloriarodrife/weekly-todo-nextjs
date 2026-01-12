@@ -1,0 +1,25 @@
+@import './globals.css';
+
+.board-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 95vh;
+  padding: 10px;
+}
+
+@media (min-width: 768px) {
+  .board-layout {
+    flex-direction: row;
+  }
+
+  .board-layout > * {
+    flex: 1;
+  }
+}
+
+.title {
+  color: var(--priority-high);
+  font-weight: bold;
+  font-family: var(--font-titles);
+  text-align: center;
+}

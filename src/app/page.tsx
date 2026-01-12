@@ -1,66 +1,46 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useState } from 'react';
+import './page.css';
+import { Day, DayName } from './types';
+import DayColumn from '@/components/DayColumn';
+
+function generateCurrentWeek(): Day[] {
+  const result: Day[] = [];
+  const today = new Date();
+  const dayNum = today.getDay();
+
+  const difference = dayNum === 0 ? 6 : dayNum - 1;
+  today.setDate(today.getDate() - difference);
+
+  for (let i = 0; i < 7; ++i) {
+    const date = new Date(today);
+    date.setDate(today.getDate() + i);
+
+    const dayObject: Day = {
+      name: date.toLocaleDateString('en-US', { weekday: 'long' }) as DayName,
+      number: date.getDate(),
+    };
+
+    result.push(dayObject);
+  }
+
+  return result;
+}
 
 export default function Home() {
+  const currentWeek = generateCurrentWeek();
+  const user = 'Gloria';
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main style={{ padding: '20px' }}>
+      <h1 className="title"> WEEKLY CHECKLIST - {user}</h1>
+
+      <div className="board-layout">
+        {currentWeek.map((day) => (
+          <DayColumn key={day.name} name={day.name} number={day.number} />
+        ))}
+      </div>
+    </main>
   );
 }
