@@ -7,14 +7,14 @@
 }
 
 :root {
-  --background: #f9f7f2;
-  --foreground: #433e37;
-  --primary: #e6d5b8;
-  --priority-high: #d4a373;
-  --priority-medium: #ccd5ae;
-  --priority-low: #e9edc9;
-  --gray-light: #fdfcfb;
-  --accent: #bfa07a;
+  --background: #f4f1ea;
+  --gray-light: #ffffff;
+  --foreground: #1e1e1e;
+  --primary: #fdf1ec;
+  --priority-high: #964b33;
+  --priority-high-soft: #c38b77;
+  --priority-medium: #828e70;
+  --priority-low: #c5bbaf;
 
   --font-main: 'Inter', sans-serif;
   --font-titles: 'Caveat', cursive;
@@ -22,7 +22,6 @@
 
 body {
   font-family: var(--font-main);
-  background-color: var(--background);
-  color: var(--foreground);
+  color: var(--background);
   line-height: 1.6;
 }

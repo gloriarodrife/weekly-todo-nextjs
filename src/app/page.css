@@ -3,8 +3,17 @@
 .board-layout {
   display: flex;
   flex-direction: column;
-  min-height: 95vh;
   padding: 10px;
+  height: 90vh;
+  overflow: hidden;
+  gap: 10px;
+}
+
+.title {
+  color: var(--priority-high);
+  font-weight: bold;
+  font-family: var(--font-titles);
+  text-align: center;
 }
 
 @media (min-width: 768px) {
@@ -15,11 +24,4 @@
   .board-layout > * {
     flex: 1;
   }
-}
-
-.title {
-  color: var(--priority-high);
-  font-weight: bold;
-  font-family: var(--font-titles);
-  text-align: center;
 }
