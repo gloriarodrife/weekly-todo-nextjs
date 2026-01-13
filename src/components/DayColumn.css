@@ -3,18 +3,17 @@
 .column-container {
   background-color: var(--primary);
   color: var(--foreground);
+  flex: 1 1 250px;
+  max-width: 200px;
+  min-height: 400px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  min-height: 200px;
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-
   border: 1px solid var(--primary);
   border-radius: 20px;
-
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 2px 4px rgba(67, 62, 55, 0.06);
 }
@@ -24,6 +23,10 @@
 }
 
 .column-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -52,7 +55,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 28px;
   height: 28px;
   border-radius: 50%;
