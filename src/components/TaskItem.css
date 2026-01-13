@@ -1,11 +1,15 @@
 @import '../app/globals.css';
 .task-item {
-  display: flex;
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
   align-items: center;
-  gap: 15px;
-  padding: 12px 18px;
-  margin: 10px 0;
-  border-radius: 15px;
+  height: 100px;
+  min-height: 100px;
+  gap: 8px;
+  padding: 12px;
+  margin: 6px;
+  border-radius: 16px;
+  position: relative;
   cursor: pointer;
   transition: all 0.3s ease;
   background-color: color-mix(
@@ -28,8 +32,8 @@
 }
 
 .task-checkbox {
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   border: 2px solid var(--priority-low-soft);
   display: flex;
@@ -37,22 +41,34 @@
   justify-content: center;
   background-color: white;
   flex-shrink: 0;
-  transition: border-color 0.3s ease;
 }
 
 .check-mark {
   color: var(--priority-high);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
-  line-height: 1;
 }
 
 .task-text {
   font-family: var(--font-titles);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  line-height: 1.2;
   margin: 0;
   color: var(--foreground);
-  transition: all 0.3s ease;
+  height: 80px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 5px;
+  word-break: break-word;
+}
+
+.task-text::-webkit-scrollbar {
+  width: 4px;
+}
+
+.task-text::-webkit-scrollbar-thumb {
+  background: var(--priority-low-soft);
+  border-radius: 10px;
 }
 
 .task-item.is-done {
@@ -70,7 +86,6 @@
 .task-item.is-done .task-text {
   text-decoration-color: var(--priority-high);
   color: var(--priority-high-soft);
-  opacity: 0.7;
 }
 
 .task-item:hover {
@@ -79,18 +94,18 @@
 }
 
 .delete-task-btn {
-  cursor: pointer;
+  border: 1px solid var(--priority-high);
+  color: var(--priority-high);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 1px solid var(--priority-high);
-  color: var(--priority-high);
-  font-size: 0.9rem;
+  font-size: 14px;
   font-weight: bold;
-  position: relative;
-  bottom: 15px;
-  left: 15px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }
