@@ -77,3 +77,20 @@
   transform: scale(1.01);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
+
+.delete-task-btn {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--priority-high);
+  color: var(--priority-high);
+  font-size: 0.9rem;
+  font-weight: bold;
+  position: relative;
+  bottom: 15px;
+  left: 15px;
+}
