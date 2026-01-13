@@ -12,10 +12,12 @@
   overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  border: 1px solid var(--primary);
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   box-shadow: 0 2px 4px rgba(67, 62, 55, 0.06);
+  cursor: pointer;
+  border: 1px solid rgba(67, 62, 55, 0.12);
+  box-shadow: 0 20px 30px rgba(67, 62, 55, 0.15) 2;
 }
 
 .column-container::-webkit-scrollbar {
@@ -40,13 +42,6 @@
   font-family: var(--font-titles);
   font-weight: bold;
   font-size: x-large;
-}
-
-.column-container:hover {
-  cursor: pointer;
-  transform: translateY(-4px);
-  border: 1px solid rgba(67, 62, 55, 0.12);
-  box-shadow: 0 20px 30px rgba(67, 62, 55, 0.15) 2;
 }
 
 .add-task-btn {

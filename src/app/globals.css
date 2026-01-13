@@ -9,12 +9,15 @@
 :root {
   --background: #f4f1ea;
   --gray-light: #ffffff;
+  --gray-dark: #e8e4df;
   --foreground: #1e1e1e;
   --primary: #fdf1ec;
   --priority-high: #964b33;
   --priority-high-soft: #c38b77;
-  --priority-medium: #828e70;
-  --priority-low: #c5bbaf;
+  --priority-medium: #4a5d3e;
+  --priority-medium-soft: #828e70;
+  --priority-low: #6b6359;
+  --priority-low-soft: #c5bbaf;
 
   --font-main: 'Inter', sans-serif;
   --font-titles: 'Caveat', cursive;

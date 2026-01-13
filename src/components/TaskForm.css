@@ -1,0 +1,152 @@
+@import '../app/globals.css';
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+}
+
+.modal-content {
+  border-radius: 16px;
+  background-color: var(--gray-light);
+  padding: 2.5rem;
+  border: none;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+  background-image: radial-gradient(
+    var(--priority-low-soft) 0.5px,
+    transparent 0.5px
+  );
+  background-size: 20px 20px;
+  background-position: 0 0;
+}
+
+.modal-title {
+  font-family: var(--font-titles);
+  font-size: 2rem;
+  font-weight: 200;
+  margin-bottom: 2rem;
+  color: var(--priority-high);
+}
+
+.modal-task-details input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--priority-low-soft);
+  font-family: var(--font-body);
+  font-size: 1.2rem;
+  padding: 10px 0;
+  outline: none;
+  color: var(--foreground);
+  transition: border-color 0.3s;
+}
+
+.modal-task-details input:focus {
+  border-bottom-color: var(--priority-high-soft);
+}
+
+.prio-check {
+  cursor: pointer;
+  font-size: 0.9rem;
+  align-items: center;
+  text-transform: lowercase;
+  font-style: italic;
+}
+
+.buttons-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.modal-cancel__button,
+.modal-add__button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: var(--font-titles);
+  font-size: 1.1rem;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.modal-add__button {
+  color: var(--priority-high);
+  opacity: 1;
+  text-decoration: none;
+  border: 1px solid var(--priority-high-soft);
+  padding: 8px 20px;
+  border-radius: 20px;
+}
+
+.modal-cancel__button:hover {
+  opacity: 1;
+}
+
+.modal-task-details {
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.priority-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 2px;
+}
+
+.prio-check input {
+  display: none;
+}
+
+.prio-check {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-titles);
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+.custom-check {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  flex-shrink: 0;
+  display: inline-block;
+  transition: all 0.2s ease-out;
+}
+
+input[type='radio']:checked + .custom-check.high {
+  background-color: var(--priority-high);
+}
+input[type='radio']:checked + .custom-check.medium {
+  background-color: var(--priority-medium);
+}
+input[type='radio']:checked + .custom-check.low {
+  background-color: var(--priority-low);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
