@@ -9,11 +9,9 @@ export type DayName =
   | 'Sunday';
 
 export interface Task {
-  id: string;
-  title: string;
+  text: string;
   completed: boolean;
   priority: Priority;
-  day: DayName;
 }
 
 export interface Day {

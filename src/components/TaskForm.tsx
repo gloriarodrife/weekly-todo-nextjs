@@ -30,7 +30,7 @@ export default function TaskForm({ onClose }: { onClose: () => void }) {
                   checked={priority === 'medium'}
                   onChange={() => setPriority('medium')}
                 />
-                <span className="custom-check medium"> </span>
+                <span className="custom-check medium"></span>
                 Medium
               </label>
               <label className="prio-check">

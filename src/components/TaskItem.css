@@ -1,0 +1,79 @@
+@import '../app/globals.css';
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 18px;
+  margin: 10px 0;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: color-mix(
+    in srgb,
+    var(--priority-low-soft),
+    transparent 90%
+  );
+}
+
+.task-item.high {
+  background-color: color-mix(in srgb, var(--priority-high), transparent 50%);
+}
+
+.task-item.medium {
+  background-color: color-mix(in srgb, var(--priority-medium), transparent 50%);
+}
+
+.task-item.low {
+  background-color: color-mix(in srgb, var(--priority-low), transparent 50%);
+}
+
+.task-checkbox {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--priority-low-soft);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease;
+}
+
+.check-mark {
+  color: var(--priority-high);
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+.task-text {
+  font-family: var(--font-titles);
+  font-size: 1.4rem;
+  margin: 0;
+  color: var(--foreground);
+  transition: all 0.3s ease;
+}
+
+.task-item.is-done {
+  background-color: color-mix(
+    in srgb,
+    var(--priority-high-soft),
+    transparent 80%
+  );
+}
+
+.task-item.is-done .task-checkbox {
+  border-color: var(--priority-high);
+}
+
+.task-item.is-done .task-text {
+  text-decoration-color: var(--priority-high);
+  color: var(--priority-high-soft);
+  opacity: 0.7;
+}
+
+.task-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}

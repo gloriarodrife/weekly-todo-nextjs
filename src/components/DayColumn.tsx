@@ -4,6 +4,7 @@ import './DayColumn.css';
 import { Day } from '@/app/types';
 import TaskForm from './TaskForm';
 import { useState } from 'react';
+import TaskItem from './TaskItem';
 
 export default function DayColumn({ name, number }: Day) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,8 +34,9 @@ export default function DayColumn({ name, number }: Day) {
         </button>
       </div>
       <div>
-        <div> task</div>
-        <div> task</div>
+        <TaskItem text={'Description'} priority={'high'} completed={false} />
+        <TaskItem text={'Description'} priority={'medium'} completed={false} />
+        <TaskItem text={'Description'} priority={'low'} completed={true} />
       </div>
 
       {isModalOpen && <TaskForm onClose={closeModal} />}
