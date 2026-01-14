@@ -5,6 +5,7 @@
   align-items: center;
   height: 100px;
   min-height: 100px;
+  min-width: 180px;
   gap: 8px;
   padding: 12px;
   margin: 6px;
@@ -50,6 +51,8 @@
 }
 
 .task-text {
+  display: flex;
+  align-items: center;
   font-family: var(--font-titles);
   font-size: 1.3rem;
   line-height: 1.2;
