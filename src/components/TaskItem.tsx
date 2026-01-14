@@ -1,13 +1,20 @@
 import { useState } from 'react';
 import './TaskItem.css';
-import { Task } from '@/app/types';
+
+interface TaskItemProps {
+  id: string;
+  text: string;
+  priority: 'low' | 'medium' | 'high';
+  completed: boolean;
+  onDelete: () => void; // 👈 Añade esto aquí
+}
 
 export default function TaskItem({
   text,
   priority,
   completed,
   onDelete,
-}: Task) {
+}: TaskItemProps) {
   const [isDone, setIsDone] = useState(completed);
 
   const handleDeleteClick = (e: { stopPropagation: () => void }) => {

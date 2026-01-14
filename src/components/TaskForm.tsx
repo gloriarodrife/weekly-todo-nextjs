@@ -1,9 +1,34 @@
 'use client';
 import { useState } from 'react';
 import './TaskForm.css';
+import { v4 as uuidv4 } from 'uuid';
+import { Priority, Task } from '@/app/types';
 
-export default function TaskForm({ onClose }: { onClose: () => void }) {
-  const [priority, setPriority] = useState('medium');
+export default function TaskForm({
+  onClose,
+  onSave,
+}: {
+  onClose: () => void;
+  onSave: (task: Task) => void;
+}) {
+  const [priority, setPriority] = useState<Priority>('medium');
+  const [description, setDescription] = useState('');
+  const addTaskDescription = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setDescription(e.target.value);
+
+  const addTask = () => {
+    if (!description.trim()) return;
+
+    const newTask = {
+      id: uuidv4(),
+      text: description,
+      priority: priority,
+      completed: false,
+    };
+
+    onSave(newTask);
+    onClose();
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -11,7 +36,10 @@ export default function TaskForm({ onClose }: { onClose: () => void }) {
         <div>
           <h1 className="modal-title">For my future self</h1>
           <div className="modal-task-details">
-            <input placeholder="Describe your task" />
+            <input
+              placeholder="Describe your task"
+              onChange={addTaskDescription}
+            />
             <div className="priority-group">
               <label className="prio-check">
                 <input
@@ -54,7 +82,7 @@ export default function TaskForm({ onClose }: { onClose: () => void }) {
           >
             Cancel
           </button>
-          <button className="modal-add__button" type="submit">
+          <button className="modal-add__button" type="button" onClick={addTask}>
             Add
           </button>
         </div>

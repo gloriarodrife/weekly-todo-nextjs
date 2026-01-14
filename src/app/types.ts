@@ -1,4 +1,5 @@
 export type Priority = 'low' | 'medium' | 'high';
+
 export type DayName =
   | 'Monday'
   | 'Tuesday'
@@ -13,14 +14,19 @@ export interface Task {
   text: string;
   completed: boolean;
   priority: Priority;
-  onDelete?(): void;
 }
 
-export interface Day {
+export interface DayData {
   name: DayName;
   number: number;
 }
 
-export interface WeeklyTasks {
-  [day: string]: Task[];
+export interface DayColumnProps extends DayData {
+  tasks: Task[];
+  onAddTask: (task: Task) => void;
+  onDeleteTask: (taskId: string) => void;
 }
+
+export type WeeklyTasks = {
+  [key in DayName]: Task[];
+};

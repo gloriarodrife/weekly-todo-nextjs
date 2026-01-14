@@ -1,12 +1,18 @@
 'use client';
 import './DayColumn.css';
 
-import { Day } from '@/app/types';
+import { DayColumnProps, Task } from '@/app/types';
 import TaskForm from './TaskForm';
 import { useState } from 'react';
 import TaskItem from './TaskItem';
 
-export default function DayColumn({ name, number }: Day) {
+export default function DayColumn({
+  name,
+  number,
+  tasks,
+  onAddTask,
+  onDeleteTask,
+}: DayColumnProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   function openModalForm() {
@@ -34,12 +40,27 @@ export default function DayColumn({ name, number }: Day) {
         </button>
       </div>
       <div>
-        <TaskItem text={'Description'} priority={'high'} completed={false} />
-        <TaskItem text={'Description'} priority={'medium'} completed={false} />
-        <TaskItem text={'Description'} priority={'low'} completed={true} />
+        {tasks.map((task: Task) => (
+          <TaskItem
+            key={task.id}
+            id={task.id}
+            text={task.text}
+            priority={task.priority}
+            completed={task.completed}
+            onDelete={() => onDeleteTask(task.id)}
+          />
+        ))}
       </div>
 
-      {isModalOpen && <TaskForm onClose={closeModal} />}
+      {isModalOpen && (
+        <TaskForm
+          onClose={closeModal}
+          onSave={(task: Task) => {
+            onAddTask(task);
+            closeModal();
+          }}
+        />
+      )}
     </section>
   );
 }
