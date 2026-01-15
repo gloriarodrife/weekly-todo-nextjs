@@ -8,7 +8,7 @@ interface TaskItemProps {
   text: string;
   priority: 'low' | 'medium' | 'high';
   completed: boolean;
-  onDelete: () => void; // 👈 Añade esto aquí
+  onDelete: () => void;
 }
 
 export default function TaskItem({

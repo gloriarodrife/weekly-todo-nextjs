@@ -10,11 +10,34 @@
   gap: 10px;
 }
 
-.title {
+.title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.title-container input {
+  background: transparent;
+  border: none;
+  min-width: 60px;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.title-container input::placeholder {
+  color: var(--priority-high);
+}
+
+.title,
+.title-container input {
+  font-size: 1.8rem;
   color: var(--priority-high);
   font-weight: bold;
   font-family: var(--font-titles);
-  text-align: center;
 }
 
 @media (min-width: 768px) {

@@ -30,22 +30,30 @@ function generateCurrentWeek(): DayData[] {
 
 export default function Home() {
   const currentWeek = generateCurrentWeek();
-  const user = 'Gloria';
+  const STORAGE_NAME = 'user-name';
   const STORAGE_KEY = 'weekly-tasks';
   const [tasksList, setTasksList] = useState<WeeklyTasks>({} as WeeklyTasks);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
     const storedTasks = localStorage.getItem(STORAGE_KEY);
+    const storedName = localStorage.getItem(STORAGE_NAME);
 
     if (storedTasks) {
       // eslint-disable-next-line react-hooks/exhaustive-deps
       setTasksList(JSON.parse(storedTasks));
     }
+
+    if (storedName) {
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      setUserName(JSON.parse(storedName));
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksList));
-  }, [tasksList]);
+    localStorage.setItem(STORAGE_NAME, JSON.stringify(userName));
+  }, [tasksList, userName]);
 
   const addTaskToDay = (dayName: DayName, newTask: Task) => {
     setTasksList((prev) => ({
@@ -61,9 +69,16 @@ export default function Home() {
     }));
   };
 
+  const addName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserName(e.target.value);
+  };
+
   return (
     <main style={{ padding: '20px' }}>
-      <h1 className="title"> {user} - WEEKLY CHECKLIST </h1>
+      <div className="title-container">
+        <div className="title">WEEKLY CHECKLIST -</div>
+        <input placeholder="Name" onChange={addName} value={userName} />
+      </div>
 
       <div className="board-layout">
         {currentWeek.map((day) => (
