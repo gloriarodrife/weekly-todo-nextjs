@@ -69,6 +69,18 @@ export default function Home() {
     }));
   };
 
+  const changeStateTask = (dayName: DayName, taskId: string) => {
+    setTasksList((prev) => ({
+      ...prev,
+      [dayName]: (prev[dayName] || []).map((task) => {
+        if (task.id === taskId) {
+          return { ...task, completed: !task.completed };
+        }
+        return task;
+      }),
+    }));
+  };
+
   const addName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserName(e.target.value);
   };
@@ -90,6 +102,9 @@ export default function Home() {
             onAddTask={(task: Task) => addTaskToDay(day.name, task)}
             onDeleteTask={(taskId: string) =>
               deleteTaskFromDay(day.name, taskId)
+            }
+            onCompletedTask={(taskId: string) =>
+              changeStateTask(day.name, taskId)
             }
           />
         ))}

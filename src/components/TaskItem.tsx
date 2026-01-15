@@ -2,36 +2,36 @@
 
 import { useState } from 'react';
 import './TaskItem.css';
-
-interface TaskItemProps {
-  id: string;
-  text: string;
-  priority: 'low' | 'medium' | 'high';
-  completed: boolean;
-  onDelete: () => void;
-}
+import { TaskItemProps } from '@/app/types';
 
 export default function TaskItem({
   text,
   priority,
   completed,
   onDelete,
+  onCompleted,
 }: TaskItemProps) {
-  const [isDone, setIsDone] = useState(completed);
-
   const handleDeleteClick = (e: { stopPropagation: () => void }) => {
     e.stopPropagation();
     if (onDelete) {
       onDelete();
     }
   };
+
+  const handleCompletedTask = (e: { stopPropagation: () => void }) => {
+    e.stopPropagation();
+    if (onCompleted) {
+      onCompleted();
+    }
+  };
+
   return (
     <div
-      className={`task-item ${priority} ${isDone ? 'is-done' : ''}`}
-      onClick={() => setIsDone(!isDone)}
+      className={`task-item ${priority} ${completed ? 'is-done' : ''}`}
+      onClick={handleCompletedTask}
     >
       <div className="task-checkbox">
-        {isDone && <span className="check-mark">✓</span>}
+        {completed && <span className="check-mark">✓</span>}
       </div>
       <p className="task-text">{text}</p>
 

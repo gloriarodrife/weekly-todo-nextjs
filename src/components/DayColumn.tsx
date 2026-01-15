@@ -12,6 +12,7 @@ export default function DayColumn({
   tasks,
   onAddTask,
   onDeleteTask,
+  onCompletedTask,
 }: DayColumnProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -48,6 +49,7 @@ export default function DayColumn({
             priority={task.priority}
             completed={task.completed}
             onDelete={() => onDeleteTask(task.id)}
+            onCompleted={() => onCompletedTask(task.id)}
           />
         ))}
       </div>
